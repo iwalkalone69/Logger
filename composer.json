@@ -1,0 +1,8 @@
+{
+    "name": "iwalkalone/logger",
+    "autoload": {
+        "psr-0" : {
+            "iwalkalone\\Logger" : "src"
+        }
+    }
+}
