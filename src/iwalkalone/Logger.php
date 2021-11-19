@@ -6,11 +6,6 @@ class Logger
 {
     protected $codeception = false;
 
-    public function __construct()
-    {
-        $this->codeception = class_exists('\Codeception\Util\Debug');
-    }
-
     public function consoleLog($s_message, $color = 'green', $timestamp = true, $endline = true)
     {
         $start = "\033[";
@@ -30,24 +25,11 @@ class Logger
         }
         if ($timestamp) {
             $msg = $start . $bash_color . 'm' . date('H:i:s ') . $s_message;
-            if ($this->codeception) {
-                \Codeception\Util\Debug::debug($msg);
-            } else {
-                echo $msg;
-            }
+            echo $msg;
         } else {
             $msg = $start . $bash_color . 'm' . $s_message;
-            if ($this->codeception) {
-                \Codeception\Util\Debug::debug($msg);
-            } else {
-                echo $msg;
-            }
+            echo $msg;
         }
-        if ($endline) {
-            if ($this->codeception) {
-            } else {
-                echo $end;
-            }
-        }
+        if ($endline) echo $end;
     }
 }
